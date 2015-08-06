@@ -1,9 +1,25 @@
 Rails.application.routes.draw do
+  namespace :api do
+  get 'users/index'
+  end
+
+  namespace :api do
+  get 'users/create'
+  end
+
+  namespace :api do
+  get 'users/destroy'
+  end
+
   get 'welcome/index'
 
   get 'welcome/about'
 
   root to: 'welcome#index'
+
+  namespace :api, defaults: { format: :json } do
+    resources :users
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
